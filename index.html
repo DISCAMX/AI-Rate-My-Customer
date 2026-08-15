@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b2545" />
+  <title>RateMyCustomer — Command Center</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="RateMyCustomer home"><span class="mark">RMC</span><span>RateMyCustomer<small>Your reputation works both ways.</small></span></a>
+    <div class="view-switch" role="group" aria-label="Dashboard view">
+      <button class="active" data-view="servicer">Servicer</button><button data-view="customer">Customer</button>
+    </div>
+    <button class="avatar" aria-label="Account menu">MD</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow" id="view-label">SERVICER COMMAND CENTER</p><h1 id="greeting">Good morning, Mike.</h1><p id="hero-copy">Protect your reputation, reward reliable customers, and resolve complaints with verified evidence.</p></div>
+      <div class="hero-actions"><button class="secondary" id="secondary-action">Create verified complaint</button><button class="primary" id="primary-action">Share review QR</button></div>
+    </section>
+
+    <nav class="tabs" aria-label="Dashboard sections">
+      <button class="active" data-panel="overview">Overview</button><button data-panel="benefits">RMC Preferred</button><button data-panel="verification">Verification</button><button data-panel="exchange">AI Data Exchange</button>
+    </nav>
+
+    <section id="overview" class="panel active">
+      <div class="stats">
+        <article><span>RMC Standing</span><strong id="standing">Preferred</strong><small>Verified and current</small></article>
+        <article><span id="metric-label">Preferred members</span><strong id="metric-value">1,284</strong><small>+8.4% this month</small></article>
+        <article><span>Open verifications</span><strong>7</strong><small>None affect standing yet</small></article>
+        <article><span id="reward-label">Rewards issued</span><strong id="reward-value">42,860</strong><small>DISC + VISC + AMDX test rewards</small></article>
+      </div>
+      <div class="grid two">
+        <article class="card"><div class="card-title"><div><p class="eyebrow">REPUTATIONGUARD</p><h2>Verification queue</h2></div><span class="badge safe">Protected</span></div><div id="case-list"></div></article>
+        <article class="card"><div class="card-title"><div><p class="eyebrow">RMC PREFERRED</p><h2 id="benefit-title">Active customer benefits</h2></div><button class="text-button" data-open="benefits">Manage</button></div><div id="benefit-list"></div></article>
+      </div>
+    </section>
+
+    <section id="benefits" class="panel">
+      <div class="section-heading"><div><p class="eyebrow">REWARD MUTUAL RESPECT</p><h2>RMC Preferred tier builder</h2><p>Offer better experiences based on verified reliability—not review sentiment.</p></div><button class="primary" id="add-benefit">Add benefit</button></div>
+      <div class="tier-grid" id="tier-grid"></div>
+      <div class="rule"><strong>Fair-benefit rule</strong><span>Never require a positive review, removal of an honest complaint, waiver of rights, or unnecessary personal data.</span></div>
+    </section>
+
+    <section id="verification" class="panel">
+      <div class="section-heading"><div><p class="eyebrow">VERIFIED COMPLAINT GATE</p><h2>Evidence before impact</h2><p>A submission cannot change customer standing until the transaction, evidence, response period, and human review are complete.</p></div></div>
+      <ol class="steps"><li class="done">Identity</li><li class="done">Transaction</li><li class="current">Evidence screening</li><li>Customer response</li><li>Human decision</li></ol>
+      <article class="card verification-card"><div><span class="badge pending">No rating effect</span><h3>Case RMC-2048 · Disputed chargeback</h3><p>Transaction and provider identity are verified. Receipt authenticity and message chronology are being evaluated.</p></div><div class="evidence"><span>Original invoice <b>Verified</b></span><span>Service timestamp <b>Verified</b></span><span>Customer messages <b>Screening</b></span><span>Customer response <b>6 days left</b></span></div></article>
+    </section>
+
+    <section id="exchange" class="panel">
+      <div class="section-heading"><div><p class="eyebrow">CONSENT-CONTROLLED MARKETPLACE</p><h2>AI Data Exchange</h2><p>Choose metadata licenses individually and see the test reward before approving them.</p></div><div class="token-choice" role="group" aria-label="Reward token"><button class="active" data-token="DISC">DISC</button><button data-token="VISC">VISC</button><button data-token="AMDX">AMDX</button></div></div>
+      <div class="exchange-layout"><div class="tag-list" id="tag-list"></div><aside class="reward-card"><p class="eyebrow">ESTIMATED TEST REWARD</p><strong><span id="reward-total">18.5</span> <span id="reward-token">DISC</span></strong><p>Pending until the network and token contract are confirmed.</p><button class="primary" id="approve-tags">Approve selected licenses</button><small>Private records remain off-chain. Consent proof, provenance, permitted use, and reward receipts are recorded.</small></aside></div>
+    </section>
+  </main>
+
+  <dialog id="modal"><form method="dialog"><button class="close" aria-label="Close">×</button><p class="eyebrow">NEW VERIFIED COMPLAINT</p><h2>Start with the transaction</h2><label>Customer or transaction ID<input placeholder="Search verified records" /></label><label>Complaint category<select><option>Payment or chargeback</option><option>Property damage</option><option>Cancellation</option><option>Safety or conduct</option></select></label><label>Factual summary<textarea placeholder="Describe what happened without conclusions or insults"></textarea></label><p class="notice">Submitting starts verification. It does not immediately change the customer’s RMC Standing.</p><button class="primary" value="close">Save verification draft</button></form></dialog>
+  <dialog id="qr-modal"><form method="dialog" class="qr-form"><button class="close" aria-label="Close">×</button><p class="eyebrow" id="qr-eyebrow">SERVICER REVIEW REQUEST</p><h2 id="qr-title">Share an honest experience</h2><p id="qr-copy">Scan to review this verified service interaction on Google. The request is for honest feedback—positive or negative.</p><div class="qr-shell"><canvas id="qr-canvas" width="210" height="210" aria-label="QR invitation preview"></canvas><span class="qr-center">RMC</span></div><div class="share-code"><span id="qr-code">RMC-S-4821</span><button type="button" class="text-button" id="copy-link">Copy link</button></div><div class="points-callout" id="points-copy"><strong>Transparent request</strong><span>No benefit depends on leaving a positive review.</span></div><button class="primary" value="close">Share QR invitation</button></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
