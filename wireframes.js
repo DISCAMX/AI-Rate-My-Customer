@@ -1,0 +1,11 @@
+const devices=[
+ {name:'iPhone',class:'phone',screen:'customer',title:'Customer standing',body:'Preferred · 12 benefits',actions:['Share my QR','View benefits']},
+ {name:'Android',class:'phone',screen:'servicer',title:'Servicer command',body:'7 verifications · protected',actions:['Share review QR','New complaint']},
+ {name:'iPad',class:'tablet',screen:'split',title:'Evidence review',body:'Case RMC-2048 · no rating effect',actions:['Compare evidence','Request response']},
+ {name:'Smart Watch',class:'watch',screen:'glance',title:'RMC Preferred',body:'Priority access unlocked',actions:['Show QR']},
+ {name:'Smart TV',class:'tv',screen:'display',title:'Service reputation',body:'Private household overview',actions:['Open with phone']},
+ {name:'Desktop',class:'desktop',screen:'admin',title:'RMC operations',body:'Standing, benefits, data exchange',actions:['Open command center','Audit consent']}
+];
+const journeys=[['Onboarding','Choose customer or servicer; verify identity and permissions.'],['Verified interaction','Create a signed transaction link before either party reviews.'],['Reciprocal QR','Servicer requests an honest Google review; customer requests a verified RMC review.'],['Complaint gate','Verify identity, transaction, evidence, response, and human decision.'],['Preferred benefits','Unlock discounts, VIP access, reservations, upgrades, and rewards.'],['AI Data Exchange','License individual metadata tags for DISC, VISC, or AMDX test rewards.']];
+document.querySelector('#devices').innerHTML=devices.map(d=>`<article class="device-card"><div class="device ${d.class}"><div class="device-top">${d.name}<span>●</span></div><div class="mini-screen ${d.screen}"><span class="mini-mark">RMC</span><small>${d.screen.toUpperCase()}</small><h3>${d.title}</h3><p>${d.body}</p><div>${d.actions.map((a,i)=>`<button class="${i?'ghost':''}">${a}</button>`).join('')}</div></div></div><h2>${d.name}</h2><p>${d.class==='watch'?'Glance, alerts, identity and QR presentation.':d.class==='tv'?'Large-format status and handoff to a private device.':'Responsive access to the shared RMC product model.'}</p></article>`).join('');
+document.querySelector('#journeys').innerHTML=journeys.map((j,i)=>`<article><span>${String(i+1).padStart(2,'0')}</span><h3>${j[0]}</h3><p>${j[1]}</p></article>`).join('');
