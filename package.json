@@ -1,0 +1,1 @@
+{"name":"ratemycustomer-platform","version":"0.1.0","private":true,"scripts":{"test":"node --test tests/*.test.js","check":"node --check app.js && node --check wireframes.js && npm test"}}
