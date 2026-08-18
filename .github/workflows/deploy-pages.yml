@@ -1,4 +1,4 @@
-name: Deploy interactive preview
+name: Deploy premium UI/UX preview
 on:
   push:
     branches: [main]
@@ -23,7 +23,7 @@ jobs:
           enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
-      - name: Deploy to GitHub Pages
+          path: public
+      - name: Deploy approved premium design palette
         id: deployment
         uses: actions/deploy-pages@v4
